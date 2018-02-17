@@ -1,0 +1,21 @@
+CC = gcc
+
+CFLAGS = -I. -Wall
+
+LIBS =  -lm
+
+SRCS = hellomain.c helloprint.c
+
+OBJS = $(SRCS: .c = .o)
+
+PROG = hello
+
+all: $(OBJS)
+	$(CC) $(CFLAGS) $(LIBS) $(OBJS) -o $(PROG)
+
+.c.o:
+	$(CC) $(CFLAGS) -c $<
+
+clean:
+	rm *.o
+	rm *~

@@ -1,0 +1,1 @@
+/usr/bin/cc -g   CMakeFiles/Lab_1.dir/command_line_parsing.c.o  -o Lab_1 

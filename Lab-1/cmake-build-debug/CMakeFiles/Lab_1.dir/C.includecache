@@ -1,0 +1,16 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/D2R/Documents/CLionProjects/OS-Lab/Lab-1/command_line_parsing.c
+stdio.h
+-
+stdlib.h
+-
+unistd.h
+-
+
