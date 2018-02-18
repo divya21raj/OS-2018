@@ -21,6 +21,8 @@ void copyFile(char *sourcePath, char *destinationPath);
 
 void checkExceptions(char *sourcePath, char *destinationPath);
 
+void appendSourceFileName(char *destinationPath, char *sourcePath);
+
 int main(int argc, char* argv[MAX_PATH_LENGTH])
 {
 	parseArguments(argc, argv);
@@ -102,5 +104,35 @@ void parseArguments(int argc, char* argv[MAX_PATH_LENGTH])
 	{
 		sourcePath = strdup(argv[1]);
 		destinationPath = strdup(argv[2]);
+
+		appendSourceFileName(destinationPath, sourcePath);
+	}
+}
+
+void appendSourceFileName(char *destinationPath, char *sourcePath)
+{
+	char *sourceFileName = malloc(MAX_PATH_LENGTH/4);
+
+	int i, j=0;
+
+	for(i=0; i<strlen(sourcePath); i++)
+	{
+		if(sourcePath[i] == '/')
+		{
+			memset(sourceFileName,0,strlen(sourceFileName));
+			j=0;
+		}
+		else
+			sourceFileName[j++] = sourcePath[i];
+	}
+
+	if(destinationPath[strlen(destinationPath) - 1] == '/')
+		strcat(destinationPath, sourceFileName);
+	else
+	{
+		memmove(sourceFileName + 1, sourceFileName, strlen(sourceFileName));
+		sourceFileName[0] = '/';
+
+		strcat(destinationPath, sourceFileName);
 	}
 }
