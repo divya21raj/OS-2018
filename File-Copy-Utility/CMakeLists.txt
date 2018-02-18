@@ -3,4 +3,4 @@ project(File_Copy_Utility C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(File_Copy_Utility main.c)
+add_executable(File_Copy_Utility file-copy-utility.c)
