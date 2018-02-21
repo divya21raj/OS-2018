@@ -123,32 +123,32 @@ File_Copy_Utility/fast:
 	$(MAKE) -f CMakeFiles/File_Copy_Utility.dir/build.make CMakeFiles/File_Copy_Utility.dir/build
 .PHONY : File_Copy_Utility/fast
 
-main.o: main.c.o
+file-copy-utility.o: file-copy-utility.c.o
 
-.PHONY : main.o
+.PHONY : file-copy-utility.o
 
 # target to build an object file
-main.c.o:
-	$(MAKE) -f CMakeFiles/File_Copy_Utility.dir/build.make CMakeFiles/File_Copy_Utility.dir/main.c.o
-.PHONY : main.c.o
+file-copy-utility.c.o:
+	$(MAKE) -f CMakeFiles/File_Copy_Utility.dir/build.make CMakeFiles/File_Copy_Utility.dir/file-copy-utility.c.o
+.PHONY : file-copy-utility.c.o
 
-main.i: main.c.i
+file-copy-utility.i: file-copy-utility.c.i
 
-.PHONY : main.i
+.PHONY : file-copy-utility.i
 
 # target to preprocess a source file
-main.c.i:
-	$(MAKE) -f CMakeFiles/File_Copy_Utility.dir/build.make CMakeFiles/File_Copy_Utility.dir/main.c.i
-.PHONY : main.c.i
+file-copy-utility.c.i:
+	$(MAKE) -f CMakeFiles/File_Copy_Utility.dir/build.make CMakeFiles/File_Copy_Utility.dir/file-copy-utility.c.i
+.PHONY : file-copy-utility.c.i
 
-main.s: main.c.s
+file-copy-utility.s: file-copy-utility.c.s
 
-.PHONY : main.s
+.PHONY : file-copy-utility.s
 
 # target to generate assembly for a file
-main.c.s:
-	$(MAKE) -f CMakeFiles/File_Copy_Utility.dir/build.make CMakeFiles/File_Copy_Utility.dir/main.c.s
-.PHONY : main.c.s
+file-copy-utility.c.s:
+	$(MAKE) -f CMakeFiles/File_Copy_Utility.dir/build.make CMakeFiles/File_Copy_Utility.dir/file-copy-utility.c.s
+.PHONY : file-copy-utility.c.s
 
 # Help Target
 help:
@@ -159,9 +159,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... File_Copy_Utility"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... file-copy-utility.o"
+	@echo "... file-copy-utility.i"
+	@echo "... file-copy-utility.s"
 .PHONY : help
 
 

@@ -57,38 +57,38 @@ include CMakeFiles/File_Copy_Utility.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/File_Copy_Utility.dir/flags.make
 
-CMakeFiles/File_Copy_Utility.dir/main.c.o: CMakeFiles/File_Copy_Utility.dir/flags.make
-CMakeFiles/File_Copy_Utility.dir/main.c.o: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/D2R/Documents/CLionProjects/OS-Lab/File-Copy-Utility/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/File_Copy_Utility.dir/main.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/File_Copy_Utility.dir/main.c.o   -c /home/D2R/Documents/CLionProjects/OS-Lab/File-Copy-Utility/main.c
+CMakeFiles/File_Copy_Utility.dir/file-copy-utility.c.o: CMakeFiles/File_Copy_Utility.dir/flags.make
+CMakeFiles/File_Copy_Utility.dir/file-copy-utility.c.o: ../file-copy-utility.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/D2R/Documents/CLionProjects/OS-Lab/File-Copy-Utility/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/File_Copy_Utility.dir/file-copy-utility.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/File_Copy_Utility.dir/file-copy-utility.c.o   -c /home/D2R/Documents/CLionProjects/OS-Lab/File-Copy-Utility/file-copy-utility.c
 
-CMakeFiles/File_Copy_Utility.dir/main.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/File_Copy_Utility.dir/main.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/D2R/Documents/CLionProjects/OS-Lab/File-Copy-Utility/main.c > CMakeFiles/File_Copy_Utility.dir/main.c.i
+CMakeFiles/File_Copy_Utility.dir/file-copy-utility.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/File_Copy_Utility.dir/file-copy-utility.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/D2R/Documents/CLionProjects/OS-Lab/File-Copy-Utility/file-copy-utility.c > CMakeFiles/File_Copy_Utility.dir/file-copy-utility.c.i
 
-CMakeFiles/File_Copy_Utility.dir/main.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/File_Copy_Utility.dir/main.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/D2R/Documents/CLionProjects/OS-Lab/File-Copy-Utility/main.c -o CMakeFiles/File_Copy_Utility.dir/main.c.s
+CMakeFiles/File_Copy_Utility.dir/file-copy-utility.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/File_Copy_Utility.dir/file-copy-utility.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/D2R/Documents/CLionProjects/OS-Lab/File-Copy-Utility/file-copy-utility.c -o CMakeFiles/File_Copy_Utility.dir/file-copy-utility.c.s
 
-CMakeFiles/File_Copy_Utility.dir/main.c.o.requires:
+CMakeFiles/File_Copy_Utility.dir/file-copy-utility.c.o.requires:
 
-.PHONY : CMakeFiles/File_Copy_Utility.dir/main.c.o.requires
+.PHONY : CMakeFiles/File_Copy_Utility.dir/file-copy-utility.c.o.requires
 
-CMakeFiles/File_Copy_Utility.dir/main.c.o.provides: CMakeFiles/File_Copy_Utility.dir/main.c.o.requires
-	$(MAKE) -f CMakeFiles/File_Copy_Utility.dir/build.make CMakeFiles/File_Copy_Utility.dir/main.c.o.provides.build
-.PHONY : CMakeFiles/File_Copy_Utility.dir/main.c.o.provides
+CMakeFiles/File_Copy_Utility.dir/file-copy-utility.c.o.provides: CMakeFiles/File_Copy_Utility.dir/file-copy-utility.c.o.requires
+	$(MAKE) -f CMakeFiles/File_Copy_Utility.dir/build.make CMakeFiles/File_Copy_Utility.dir/file-copy-utility.c.o.provides.build
+.PHONY : CMakeFiles/File_Copy_Utility.dir/file-copy-utility.c.o.provides
 
-CMakeFiles/File_Copy_Utility.dir/main.c.o.provides.build: CMakeFiles/File_Copy_Utility.dir/main.c.o
+CMakeFiles/File_Copy_Utility.dir/file-copy-utility.c.o.provides.build: CMakeFiles/File_Copy_Utility.dir/file-copy-utility.c.o
 
 
 # Object files for target File_Copy_Utility
 File_Copy_Utility_OBJECTS = \
-"CMakeFiles/File_Copy_Utility.dir/main.c.o"
+"CMakeFiles/File_Copy_Utility.dir/file-copy-utility.c.o"
 
 # External object files for target File_Copy_Utility
 File_Copy_Utility_EXTERNAL_OBJECTS =
 
-File_Copy_Utility: CMakeFiles/File_Copy_Utility.dir/main.c.o
+File_Copy_Utility: CMakeFiles/File_Copy_Utility.dir/file-copy-utility.c.o
 File_Copy_Utility: CMakeFiles/File_Copy_Utility.dir/build.make
 File_Copy_Utility: CMakeFiles/File_Copy_Utility.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/D2R/Documents/CLionProjects/OS-Lab/File-Copy-Utility/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable File_Copy_Utility"
@@ -99,7 +99,7 @@ CMakeFiles/File_Copy_Utility.dir/build: File_Copy_Utility
 
 .PHONY : CMakeFiles/File_Copy_Utility.dir/build
 
-CMakeFiles/File_Copy_Utility.dir/requires: CMakeFiles/File_Copy_Utility.dir/main.c.o.requires
+CMakeFiles/File_Copy_Utility.dir/requires: CMakeFiles/File_Copy_Utility.dir/file-copy-utility.c.o.requires
 
 .PHONY : CMakeFiles/File_Copy_Utility.dir/requires
 

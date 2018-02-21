@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/File_Copy_Utility.dir/main.c.o"
+  "CMakeFiles/File_Copy_Utility.dir/file-copy-utility.c.o"
   "File_Copy_Utility.pdb"
   "File_Copy_Utility"
 )

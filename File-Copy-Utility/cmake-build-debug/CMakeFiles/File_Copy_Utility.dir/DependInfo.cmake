@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/D2R/Documents/CLionProjects/OS-Lab/File-Copy-Utility/main.c" "/home/D2R/Documents/CLionProjects/OS-Lab/File-Copy-Utility/cmake-build-debug/CMakeFiles/File_Copy_Utility.dir/main.c.o"
+  "/home/D2R/Documents/CLionProjects/OS-Lab/File-Copy-Utility/file-copy-utility.c" "/home/D2R/Documents/CLionProjects/OS-Lab/File-Copy-Utility/cmake-build-debug/CMakeFiles/File_Copy_Utility.dir/file-copy-utility.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

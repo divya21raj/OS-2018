@@ -6,11 +6,13 @@
 #include <unistd.h>
 #include <stdlib.h>
 #include <memory.h>
+#include <wait.h>
 
 #define READ_END 0
 #define WRITE_END 1
 
 #define MAX_PATH_LENGTH 256
+#define MAX_FILE_SIZE 2048 //2GB!
 
 char *sourcePath;
 char *destinationPath;
@@ -32,6 +34,66 @@ int main(int argc, char* argv[MAX_PATH_LENGTH])
 	copyFile(sourcePath, destinationPath);
 
 	return 0;
+}
+
+void copyFile(char *sourcePath, char *destinationPath)
+{
+	int fd[2];   //File descriptor
+	pid_t childID;
+
+	FILE *source, *destination;
+
+	char sourceString[MAX_FILE_SIZE], destString[MAX_FILE_SIZE];
+	long fileSize;
+
+	source = fopen(sourcePath, "r");   /* Open the source file*/
+
+	fseek(source, 0L, SEEK_END);
+	fileSize = ftell(source);
+	fseek(source, 0L, SEEK_SET);
+
+	//sourceString = malloc((size_t) fileSize);
+	fread (sourceString, 1, fileSize, source);
+
+	pipe(fd); /* create pipe */
+
+	childID = fork(); //fork child process
+
+	if(childID == -1)
+	{
+		perror("fork");
+		exit(1);
+	}
+	if(childID > 0)  //PARENT
+	{
+		wait(NULL);
+
+		close(fd[WRITE_END]); /* parent only reads from pipe. Close the write end */
+
+		/* read from the pipe */
+		do
+		{
+			read(fd[READ_END], destString, MAX_FILE_SIZE);
+		}
+		while(destString == NULL);
+
+		printf("%s",destString);
+
+		close(fd[READ_END]);
+		//fclose(destination);
+
+	}
+	else  //CHILD
+	{
+		close(fd[READ_END]);   /* child only writes to pipe. Close the read end */
+
+		write(fd[WRITE_END], sourceString, strlen(sourceString)+1);
+
+		close(fd[WRITE_END]);
+		fclose(source);
+	}
+	/* Remember to close the files */
+
 }
 
 void checkExceptions(char *sourcePath, char *destinationPath)
@@ -58,38 +120,6 @@ void checkExceptions(char *sourcePath, char *destinationPath)
 			exit(1);
 		}
 	}
-}
-
-void copyFile(char *sourcePath, char *destinationPath)
-{
-	int fd[2];   //File descriptor
-	pid_t childID;
-
-	pipe(fd); /* create pipe */
-
-	childID = fork(); //fork child process
-
-	if(childID == -1)
-	{
-		perror("fork");
-		exit(1);
-	}
-	if(childID != 0)  //PARENT
-	{
-		/* parent only writes to pipe. Close the read end */
-		close(READ_END);
-		/* Open the source file and write to pipe */
-		/* Print error message if the source file does not exist */
-	}
-	else  //CHILD
-	{
-		/* child only reads from pipe. Close the write end */
-		close(fd[WRITE_END]);
-		/* Open the destination file and read from pipe */
-		/* Create the destination file if it does not exist */
-	}
-	/* Remember to close the files */
-
 }
 
 void parseArguments(int argc, char* argv[MAX_PATH_LENGTH])
