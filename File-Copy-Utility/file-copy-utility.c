@@ -43,17 +43,8 @@ void copyFile(char *sourcePath, char *destinationPath)
 
 	FILE *source, *destination;
 
-	char sourceString[MAX_FILE_SIZE], destString[MAX_FILE_SIZE];
+	char *sourceString, *destString;
 	long fileSize;
-
-	source = fopen(sourcePath, "r");   /* Open the source file*/
-
-	fseek(source, 0L, SEEK_END);
-	fileSize = ftell(source);
-	fseek(source, 0L, SEEK_SET);
-
-	//sourceString = malloc((size_t) fileSize);
-	fread (sourceString, 1, fileSize, source);
 
 	pipe(fd); /* create pipe */
 
@@ -61,14 +52,38 @@ void copyFile(char *sourcePath, char *destinationPath)
 
 	if(childID == -1)
 	{
-		perror("fork");
+		printf("FORK ERROR!\n");
 		exit(1);
 	}
-	if(childID > 0)  //PARENT
+
+	else if(childID == 0)  //CHILD
+	{
+		close(fd[READ_END]);   /* child only writes to pipe. Close the read end */
+
+		source = fopen(sourcePath, "r");   /* Open the source file*/
+
+		fseek(source, 0L, SEEK_END);    /*Getting the*/
+		fileSize = ftell(source);		/*file size. */
+		fseek(source, 0L, SEEK_SET);
+
+		sourceString = malloc(fileSize);
+
+		fread (sourceString, 1, fileSize, source);
+
+		write(fd[WRITE_END], sourceString, strlen(sourceString)+1);
+
+		close(fd[WRITE_END]);
+		fclose(source);
+	}
+
+	else  //PARENT
 	{
 		wait(NULL);
 
 		close(fd[WRITE_END]); /* parent only reads from pipe. Close the write end */
+
+		destination = fopen(destinationPath, "w");
+		destString = malloc(fileSize);
 
 		/* read from the pipe */
 		do
@@ -77,23 +92,11 @@ void copyFile(char *sourcePath, char *destinationPath)
 		}
 		while(destString == NULL);
 
-		printf("%s",destString);
+		fprintf(destination, "%s", destString);
 
 		close(fd[READ_END]);
-		//fclose(destination);
-
+		fclose(destination);
 	}
-	else  //CHILD
-	{
-		close(fd[READ_END]);   /* child only writes to pipe. Close the read end */
-
-		write(fd[WRITE_END], sourceString, strlen(sourceString)+1);
-
-		close(fd[WRITE_END]);
-		fclose(source);
-	}
-	/* Remember to close the files */
-
 }
 
 void checkExceptions(char *sourcePath, char *destinationPath)
