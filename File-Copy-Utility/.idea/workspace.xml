@@ -11,17 +11,8 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a876e8b-e307-4b50-9906-91038d6211bd" name="Default" comment="">
+    <list default="true" id="6a876e8b-e307-4b50-9906-91038d6211bd" name="Default" comment="File-Copy-Utility- Exceptionally Handled">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/File_Copy_Utility.dir/DependInfo.cmake" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/File_Copy_Utility.dir/DependInfo.cmake" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/File_Copy_Utility.dir/build.make" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/File_Copy_Utility.dir/build.make" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/File_Copy_Utility.dir/cmake_clean.cmake" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/File_Copy_Utility.dir/cmake_clean.cmake" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/File_Copy_Utility.dir/depend.make" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/File_Copy_Utility.dir/depend.make" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/File_Copy_Utility.dir/link.txt" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/File_Copy_Utility.dir/link.txt" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/File_Copy_Utility.cbp" afterPath="$PROJECT_DIR$/cmake-build-debug/File_Copy_Utility.cbp" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" />
       <change beforePath="$PROJECT_DIR$/file-copy-utility.c" afterPath="$PROJECT_DIR$/file-copy-utility.c" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -48,8 +39,8 @@
       <file leaf-file-name="file-copy-utility.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/file-copy-utility.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="642">
-              <caret line="87" column="39" lean-forward="false" selection-start-line="87" selection-start-column="39" selection-end-line="87" selection-end-column="39" />
+            <state relative-caret-position="440">
+              <caret line="90" column="22" lean-forward="false" selection-start-line="90" selection-start-column="22" selection-end-line="90" selection-end-column="22" />
               <folding>
                 <element signature="e#40#58#0" expanded="true" />
               </folding>
@@ -132,7 +123,7 @@
     <configuration name="Build All" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="File_Copy_Utility" RUN_TARGET_NAME="File_Copy_Utility" EXPLICIT_BUILD_TARGET_NAME="all">
       <envs />
     </configuration>
-    <configuration name="File_Copy_Utility" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="$PROJECT_DIR$/test.txt $PROJECT_DIR$/.." PASS_PARENT_ENVS_2="true" PROJECT_NAME="File_Copy_Utility" TARGET_NAME="File_Copy_Utility" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="File_Copy_Utility" RUN_TARGET_NAME="File_Copy_Utility">
+    <configuration name="File_Copy_Utility" type="CMakeRunConfiguration" factoryName="Application" PROGRAM_PARAMS="$PROJECT_DIR$/test.txt $PROJECT_DIR$/../" PASS_PARENT_ENVS_2="true" PROJECT_NAME="File_Copy_Utility" TARGET_NAME="File_Copy_Utility" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="File_Copy_Utility" RUN_TARGET_NAME="File_Copy_Utility">
       <envs />
     </configuration>
     <list size="2">
@@ -152,7 +143,8 @@
       <updated>1518872313642</updated>
       <workItem from="1518872315019" duration="13492000" />
       <workItem from="1518959129813" duration="8446000" />
-      <workItem from="1519201842089" duration="474000" />
+      <workItem from="1519201842089" duration="5820000" />
+      <workItem from="1519541091665" duration="10035000" />
     </task>
     <task id="LOCAL-00001" summary="File-Copy-Utility: Argument parsing in place">
       <created>1518931828064</created>
@@ -175,11 +167,25 @@
       <option name="project" value="LOCAL" />
       <updated>1518936238265</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Parent now reads from pipe, child writes to it&#10;-There's also some testing stuff around, cleanup!">
+      <created>1519202362287</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1519202362287</updated>
+    </task>
+    <task id="LOCAL-00005" summary="File-Copy-Utility- WORKS!">
+      <created>1519205254288</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1519205254288</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22412000" />
+    <option name="totallyTimeSpent" value="37793000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-37" width="1366" height="805" extended-state="6" />
@@ -187,15 +193,15 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24963397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32708934" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32635984" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CMake" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914925" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34870318" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32914925" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34867504" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39888424" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39748955" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -208,6 +214,16 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
@@ -215,20 +231,36 @@
     <MESSAGE value="File-Copy-Utility: Argument parsing in place" />
     <MESSAGE value="File-Copy-Utility: Exceptions handled&#10;-'main.c' changed to 'file-copy-utility.c'&#10;- MAX_PATH_LENGTH doubled" />
     <MESSAGE value="File-Copy-Utility: File name appended at the end of DestinationFileName" />
-    <option name="LAST_COMMIT_MESSAGE" value="File-Copy-Utility: File name appended at the end of DestinationFileName" />
+    <MESSAGE value="Parent now reads from pipe, child writes to it&#10;-There's also some testing stuff around, cleanup!" />
+    <MESSAGE value="File-Copy-Utility- WORKS!" />
+    <MESSAGE value="File-Copy-Utility- Exceptionally Handled" />
+    <option name="LAST_COMMIT_MESSAGE" value="File-Copy-Utility- Exceptionally Handled" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="27" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/file-copy-utility.c</url>
+          <line>39</line>
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="52" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
         <watch expression="sourcePath" language="ObjectiveC" />
+        <watch expression="destinationPath" language="ObjectiveC" />
       </configuration>
     </watches-manager>
   </component>
   <component name="debuggerHistoryManager">
     <expressions id="watch">
+      <expression>
+        <expression-string>destinationPath</expression-string>
+        <language-id>ObjectiveC</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
       <expression>
         <expression-string>sourcePath</expression-string>
         <language-id>ObjectiveC</language-id>
@@ -237,6 +269,24 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/file-copy-utility.c">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="17" lean-forward="true" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
+          <folding>
+            <element signature="e#40#58#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/CMakeLists.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -283,8 +333,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/file-copy-utility.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="642">
-          <caret line="87" column="39" lean-forward="false" selection-start-line="87" selection-start-column="39" selection-end-line="87" selection-end-column="39" />
+        <state relative-caret-position="440">
+          <caret line="90" column="22" lean-forward="false" selection-start-line="90" selection-start-column="22" selection-end-line="90" selection-end-column="22" />
           <folding>
             <element signature="e#40#58#0" expanded="true" />
           </folding>

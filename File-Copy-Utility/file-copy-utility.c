@@ -7,6 +7,8 @@
 #include <stdlib.h>
 #include <memory.h>
 #include <wait.h>
+#include <stdbool.h>
+#include <sys/stat.h>
 
 #define READ_END 0
 #define WRITE_END 1
@@ -25,11 +27,14 @@ void checkExceptions(char *sourcePath, char *destinationPath);
 
 void appendSourceFileName(char *destinationPath, char *sourcePath);
 
+bool isFolder(char *path);
+
+
 int main(int argc, char* argv[MAX_PATH_LENGTH])
 {
-	parseArguments(argc, argv);
+	parseArguments(argc, argv);  //parse out sourcePath and destinationPath
 
-	checkExceptions(sourcePath, destinationPath);
+	checkExceptions(sourcePath, destinationPath); //checking exceptions like files not existing, overwrite
 
 	copyFile(sourcePath, destinationPath);
 
@@ -101,7 +106,7 @@ void copyFile(char *sourcePath, char *destinationPath)
 
 void checkExceptions(char *sourcePath, char *destinationPath)
 {
-	char cho = 'n';
+	char *overWrite = malloc(sizeof(char));
 
 	if(access(sourcePath, F_OK) == -1)
 	{
@@ -109,19 +114,27 @@ void checkExceptions(char *sourcePath, char *destinationPath)
 		exit(0);
 	}
 
-	else if(access(destinationPath, F_OK) != -1) //destination file already exists!
+	if(isFolder(destinationPath))
 	{
+		appendSourceFileName(destinationPath, sourcePath);  //appending
+	}
+
+	else if(access(destinationPath, F_OK) == 0) //destination file already exists!
+	{
+		fflush(stdin);
 		printf("The destination file already exists, do you want to overwrite?(y/n) ");
-		scanf(" %s", &cho);
+		fgets(overWrite, sizeof(overWrite), stdin);
 
-		if(cho == 'y' || cho == 'Y')
-			remove(destinationPath);
-
-		else
+		if(*overWrite == 'n' || *overWrite == 'N')
 		{
-			printf("OK!\n");
 			exit(1);
 		}
+	}
+
+	else
+	{
+		printf("Failed to access %s.... invalid directory!", destinationPath);
+		exit(1);
 	}
 }
 
@@ -137,9 +150,14 @@ void parseArguments(int argc, char* argv[MAX_PATH_LENGTH])
 	{
 		sourcePath = strdup(argv[1]);
 		destinationPath = strdup(argv[2]);
-
-		appendSourceFileName(destinationPath, sourcePath);
 	}
+}
+
+bool isFolder(char *path)
+{
+	struct stat path_stat;
+	stat(path, &path_stat);
+	return S_ISDIR(path_stat.st_mode);
 }
 
 void appendSourceFileName(char *destinationPath, char *sourcePath)
