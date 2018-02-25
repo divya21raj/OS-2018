@@ -48,8 +48,8 @@ void copyFile(char *sourcePath, char *destinationPath)
 
 	FILE *source, *destination;
 
-	char *sourceString, *destString;
-	long fileSize;
+	char *sourceString, *destString;   //strings that will hold the contents to be copied
+	long fileSize;  //size of the file to be copied
 
 	pipe(fd); /* create pipe */
 
@@ -116,7 +116,7 @@ void checkExceptions(char *sourcePath, char *destinationPath)
 
 	if(isFolder(destinationPath))
 	{
-		appendSourceFileName(destinationPath, sourcePath);  //appending
+		appendSourceFileName(destinationPath, sourcePath);  //appending file name to given folder directory
 	}
 
 	else if(access(destinationPath, F_OK) == 0) //destination file already exists!
