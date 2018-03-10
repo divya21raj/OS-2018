@@ -14,10 +14,10 @@
 #define WRITE_END 1
 
 #define MAX_PATH_LENGTH 256
-#define MAX_FILE_SIZE 2048 //2GB!
+#define BUFFER_SIZE 49
 
-char *sourcePath;
-char *destinationPath;
+char *sourcePathGlobal;
+char *destinationPathGlobal;
 
 void parseArguments(int argc, char* argv[MAX_PATH_LENGTH]);
 
@@ -29,14 +29,19 @@ void appendSourceFileName(char *destinationPath, char *sourcePath);
 
 bool isFolder(char *path);
 
+void handleAlreadyExists();
+
+bool rootExists(char *path);
+
+bool hasSlash(char *path);
 
 int main(int argc, char* argv[MAX_PATH_LENGTH])
 {
-	parseArguments(argc, argv);  //parse out sourcePath and destinationPath
+	parseArguments(argc, argv);  //parse out sourcePathGlobal and destinationPathGlobal
 
-	checkExceptions(sourcePath, destinationPath); //checking exceptions like files not existing, overwrite
+	checkExceptions(sourcePathGlobal, destinationPathGlobal); //checking exceptions like files not existing, overwrite
 
-	copyFile(sourcePath, destinationPath);
+	copyFile(sourcePathGlobal, destinationPathGlobal);
 
 	return 0;
 }
@@ -48,65 +53,61 @@ void copyFile(char *sourcePath, char *destinationPath)
 
 	FILE *source, *destination;
 
-	char *sourceString, *destString;   //strings that will hold the contents to be copied
-	long fileSize;  //size of the file to be copied
+	char *sourceString = malloc(BUFFER_SIZE), *destString = malloc(BUFFER_SIZE);   //strings that will hold the contents to be copied
 
 	pipe(fd); /* create pipe */
 
+	source = fopen(sourcePath, "r");   /* Open the source file*/
+	destination = fopen(destinationPath, "w"); /*Open the destination file*/
+
 	childID = fork(); //fork child process
 
-	if(childID == -1)
-	{
-		printf("FORK ERROR!\n");
-		exit(1);
-	}
-
-	else if(childID == 0)  //CHILD
-	{
-		close(fd[READ_END]);   /* child only writes to pipe. Close the read end */
-
-		source = fopen(sourcePath, "r");   /* Open the source file*/
-
-		fseek(source, 0L, SEEK_END);    /*Getting the*/
-		fileSize = ftell(source);		/*file size. */
-		fseek(source, 0L, SEEK_SET);
-
-		sourceString = malloc(fileSize);
-
-		fread (sourceString, 1, fileSize, source);
-
-		write(fd[WRITE_END], sourceString, strlen(sourceString)+1);
-
-		close(fd[WRITE_END]);
-		fclose(source);
-	}
-
-	else  //PARENT
-	{
-		wait(NULL);
-
-		close(fd[WRITE_END]); /* parent only reads from pipe. Close the write end */
-
-		destination = fopen(destinationPath, "w");
-		destString = malloc(fileSize);
-
-		/* read from the pipe */
-		do
+		if (childID == -1)
 		{
-			read(fd[READ_END], destString, MAX_FILE_SIZE);
+			printf("FORK ERROR!\n");
+			exit(1);
 		}
-		while(destString == NULL);
 
-		fprintf(destination, "%s", destString);
+		else if (childID == 0)  //CHILD
+		{
+			close(fd[READ_END]);   /* child only writes to pipe. Close the read end */
 
-		close(fd[READ_END]);
-		fclose(destination);
-	}
+			while(fgets(sourceString, sizeof(sourceString), source))
+			{
+
+				if(write(fd[WRITE_END], sourceString, strlen(sourceString)) < 1)
+				{
+					printf("\nPipe Error!\n");
+					exit(1);
+				}
+			}
+
+			close(fd[WRITE_END]);
+		}
+
+		else  //PARENT
+		{
+			wait(NULL);
+
+			close(fd[WRITE_END]); /* parent only reads from pipe. Close the write end */
+
+			/* read from the pipe */
+			while (read(fd[READ_END], destString, BUFFER_SIZE))
+			{
+				fprintf(destination, "%s", destString);
+
+				memset(destString, 0, sizeof(destString));
+			}
+
+			close(fd[READ_END]);
+		}
+
+	fclose(source);
+	fclose(destination);
 }
 
 void checkExceptions(char *sourcePath, char *destinationPath)
 {
-	char *overWrite = malloc(sizeof(char));
 
 	if(access(sourcePath, F_OK) == -1)
 	{
@@ -114,26 +115,92 @@ void checkExceptions(char *sourcePath, char *destinationPath)
 		exit(0);
 	}
 
-	if(isFolder(destinationPath))
+	if(!hasSlash(destinationPath))
 	{
-		appendSourceFileName(destinationPath, sourcePath);  //appending file name to given folder directory
+		char currentPath[1024];
+		getcwd(currentPath, sizeof(currentPath));
+
+		char *temp = strdup(destinationPath);
+		memset(destinationPath, 0, sizeof(destinationPath));
+		destinationPath = strdup(currentPath);
+
+		strcat(destinationPath, "/");
+		strcat(destinationPath, temp);
+
+		destinationPathGlobal = destinationPath;
 	}
 
-	else if(access(destinationPath, F_OK) == 0) //destination file already exists!
+	if(isFolder(destinationPath))  //destination provided is an existing folder
 	{
-		fflush(stdin);
-		printf("The destination file already exists, do you want to overwrite?(y/n) ");
-		fgets(overWrite, sizeof(overWrite), stdin);
+		appendSourceFileName(destinationPath, sourcePath);  //appending file name to given folder directory
+		if(access(destinationPath, F_OK) == 0)
+			handleAlreadyExists();
+	}
 
-		if(*overWrite == 'n' || *overWrite == 'N')
-		{
-			exit(1);
-		}
+	else if(access(destinationPath, F_OK) == 0) //destination is a file and already exists
+		handleAlreadyExists();
+
+	else if(rootExists(destinationPath))
+	{
+		//Is a file but doesn't exist and needs to be created ... proceed
 	}
 
 	else
 	{
-		printf("Failed to access %s.... invalid directory!", destinationPath);
+		printf("Failed to access %s.... invalid directory!\n", destinationPath);
+		exit(1);
+	}
+}
+
+bool hasSlash(char *path)
+{
+	int i;
+	bool flag = false;
+
+	for(i = 0; i< strlen(path); i++)
+	{
+		if(strcmp(path + i, "\\") < 0)
+		{
+			flag = true;
+			break;
+		}
+	}
+
+	return flag;
+}
+
+bool rootExists(char *path)
+{
+	int i;
+	bool flag = false;
+
+	char *temp = strdup(path);
+
+	for(i = (int) (strlen(path) - 1); i >= 0; i--)
+	{
+		if(strcmp(path + i, "\\") < 0)
+		{
+			temp[i + 1] = 0;
+			break;
+		}
+	}
+
+	if(access(temp, F_OK) == 0)
+		flag = true;
+
+	return flag;
+}
+
+void handleAlreadyExists()
+{
+	char *overWrite = malloc(sizeof(char));
+
+	fflush(stdin);
+	printf("The destination file already exists, do you want to overwrite?(y/n) ");
+	fgets(overWrite, sizeof(overWrite), stdin);
+
+	if(*overWrite == 'n' || *overWrite == 'N')
+	{
 		exit(1);
 	}
 }
@@ -148,8 +215,8 @@ void parseArguments(int argc, char* argv[MAX_PATH_LENGTH])
 
 	else
 	{
-		sourcePath = strdup(argv[1]);
-		destinationPath = strdup(argv[2]);
+		sourcePathGlobal = strdup(argv[1]);
+		destinationPathGlobal = strdup(argv[2]);
 	}
 }
 
