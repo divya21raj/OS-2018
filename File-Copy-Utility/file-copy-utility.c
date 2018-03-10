@@ -14,7 +14,7 @@
 #define WRITE_END 1
 
 #define MAX_PATH_LENGTH 256
-#define BUFFER_SIZE 49
+#define BUFFER_SIZE 128
 
 char *sourcePathGlobal;
 char *destinationPathGlobal;
@@ -29,11 +29,13 @@ void appendSourceFileName(char *destinationPath, char *sourcePath);
 
 bool isFolder(char *path);
 
-void handleAlreadyExists();
+void handleAlreadyExisting();
 
 bool rootExists(char *path);
 
 bool hasSlash(char *path);
+
+
 
 int main(int argc, char* argv[MAX_PATH_LENGTH])
 {
@@ -115,17 +117,17 @@ void checkExceptions(char *sourcePath, char *destinationPath)
 		exit(0);
 	}
 
-	if(!hasSlash(destinationPath))
+	if(!hasSlash(destinationPath))  //no '/' in the input, i.e should be in the current directory
 	{
 		char currentPath[1024];
-		getcwd(currentPath, sizeof(currentPath));
+		getcwd(currentPath, sizeof(currentPath));  //get current path
 
 		char *temp = strdup(destinationPath);
 		memset(destinationPath, 0, sizeof(destinationPath));
 		destinationPath = strdup(currentPath);
 
 		strcat(destinationPath, "/");
-		strcat(destinationPath, temp);
+		strcat(destinationPath, temp);  //current path added before file name
 
 		destinationPathGlobal = destinationPath;
 	}
@@ -134,11 +136,11 @@ void checkExceptions(char *sourcePath, char *destinationPath)
 	{
 		appendSourceFileName(destinationPath, sourcePath);  //appending file name to given folder directory
 		if(access(destinationPath, F_OK) == 0)
-			handleAlreadyExists();
+			handleAlreadyExisting();
 	}
 
 	else if(access(destinationPath, F_OK) == 0) //destination is a file and already exists
-		handleAlreadyExists();
+		handleAlreadyExisting();
 
 	else if(rootExists(destinationPath))
 	{
@@ -191,7 +193,7 @@ bool rootExists(char *path)
 	return flag;
 }
 
-void handleAlreadyExists()
+void handleAlreadyExisting()
 {
 	char *overWrite = malloc(sizeof(char));
 

@@ -11,7 +11,7 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a876e8b-e307-4b50-9906-91038d6211bd" name="Default" comment="">
+    <list default="true" id="6a876e8b-e307-4b50-9906-91038d6211bd" name="Default" comment="File-Copy-Utility- Changed buffer size">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/file-copy-utility.c" afterPath="$PROJECT_DIR$/file-copy-utility.c" />
     </list>
@@ -39,8 +39,8 @@
       <file leaf-file-name="file-copy-utility.c" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/file-copy-utility.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="341">
-              <caret line="144" column="35" lean-forward="true" selection-start-line="144" selection-start-column="35" selection-end-line="144" selection-end-column="35" />
+            <state relative-caret-position="1785">
+              <caret line="119" column="44" lean-forward="false" selection-start-line="119" selection-start-column="44" selection-end-line="119" selection-end-column="44" />
               <folding>
                 <element signature="e#40#58#0" expanded="true" />
               </folding>
@@ -145,7 +145,7 @@
       <workItem from="1518959129813" duration="8446000" />
       <workItem from="1519201842089" duration="5820000" />
       <workItem from="1519541091665" duration="10901000" />
-      <workItem from="1520698252708" duration="14055000" />
+      <workItem from="1520698252708" duration="14724000" />
     </task>
     <task id="LOCAL-00001" summary="File-Copy-Utility: Argument parsing in place">
       <created>1518931828064</created>
@@ -196,11 +196,18 @@
       <option name="project" value="LOCAL" />
       <updated>1519561628271</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="File-Copy-Utility- Added buffered copying&#10;-Also handled some more exceptions">
+      <created>1520718676148</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1520718676148</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="52714000" />
+    <option name="totallyTimeSpent" value="53383000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-37" width="1366" height="805" extended-state="6" />
@@ -251,7 +258,8 @@
     <MESSAGE value="File-Copy-Utility- WORKS!" />
     <MESSAGE value="File-Copy-Utility- Exceptionally Handled" />
     <MESSAGE value="File-Copy-Utility- Comments" />
-    <option name="LAST_COMMIT_MESSAGE" value="File-Copy-Utility- Comments" />
+    <MESSAGE value="File-Copy-Utility- Added buffered copying&#10;-Also handled some more exceptions" />
+    <option name="LAST_COMMIT_MESSAGE" value="File-Copy-Utility- Added buffered copying&#10;-Also handled some more exceptions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -373,8 +381,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/file-copy-utility.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="341">
-          <caret line="144" column="35" lean-forward="true" selection-start-line="144" selection-start-column="35" selection-end-line="144" selection-end-column="35" />
+        <state relative-caret-position="1785">
+          <caret line="119" column="44" lean-forward="false" selection-start-line="119" selection-start-column="44" selection-end-line="119" selection-end-column="44" />
           <folding>
             <element signature="e#40#58#0" expanded="true" />
           </folding>
