@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/D2R/Documents/CLionProjects/OS-Lab/File-Copy-Utility/file-copy-utility.c
+stdio.h
+-
+unistd.h
+-
+stdlib.h
+-
+memory.h
+-
+wait.h
+-
+stdbool.h
+-
+sys/stat.h
+-
+

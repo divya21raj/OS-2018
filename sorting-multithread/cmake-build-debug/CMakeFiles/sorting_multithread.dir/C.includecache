@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/D2R/Documents/CLionProjects/OS-Lab/sorting-multithread/main.c
+stdio.h
+-
+stdbool.h
+-
+unistd.h
+-
+sys/param.h
+-
+memory.h
+-
+stdlib.h
+-
+

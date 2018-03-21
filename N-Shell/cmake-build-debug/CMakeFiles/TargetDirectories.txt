@@ -1,0 +1,3 @@
+/home/D2R/Documents/CLionProjects/OS-Lab/N-Shell/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/D2R/Documents/CLionProjects/OS-Lab/N-Shell/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/D2R/Documents/CLionProjects/OS-Lab/N-Shell/cmake-build-debug/CMakeFiles/N_Shell.dir
