@@ -57,38 +57,38 @@ include CMakeFiles/sorting_multithread.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/sorting_multithread.dir/flags.make
 
-CMakeFiles/sorting_multithread.dir/main.c.o: CMakeFiles/sorting_multithread.dir/flags.make
-CMakeFiles/sorting_multithread.dir/main.c.o: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/D2R/Documents/CLionProjects/OS-Lab/sorting-multithread/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/sorting_multithread.dir/main.c.o"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/sorting_multithread.dir/main.c.o   -c /home/D2R/Documents/CLionProjects/OS-Lab/sorting-multithread/main.c
+CMakeFiles/sorting_multithread.dir/sorting-multithread.c.o: CMakeFiles/sorting_multithread.dir/flags.make
+CMakeFiles/sorting_multithread.dir/sorting-multithread.c.o: ../sorting-multithread.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/D2R/Documents/CLionProjects/OS-Lab/sorting-multithread/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/sorting_multithread.dir/sorting-multithread.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/sorting_multithread.dir/sorting-multithread.c.o   -c /home/D2R/Documents/CLionProjects/OS-Lab/sorting-multithread/sorting-multithread.c
 
-CMakeFiles/sorting_multithread.dir/main.c.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/sorting_multithread.dir/main.c.i"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/D2R/Documents/CLionProjects/OS-Lab/sorting-multithread/main.c > CMakeFiles/sorting_multithread.dir/main.c.i
+CMakeFiles/sorting_multithread.dir/sorting-multithread.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/sorting_multithread.dir/sorting-multithread.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/D2R/Documents/CLionProjects/OS-Lab/sorting-multithread/sorting-multithread.c > CMakeFiles/sorting_multithread.dir/sorting-multithread.c.i
 
-CMakeFiles/sorting_multithread.dir/main.c.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/sorting_multithread.dir/main.c.s"
-	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/D2R/Documents/CLionProjects/OS-Lab/sorting-multithread/main.c -o CMakeFiles/sorting_multithread.dir/main.c.s
+CMakeFiles/sorting_multithread.dir/sorting-multithread.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/sorting_multithread.dir/sorting-multithread.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/D2R/Documents/CLionProjects/OS-Lab/sorting-multithread/sorting-multithread.c -o CMakeFiles/sorting_multithread.dir/sorting-multithread.c.s
 
-CMakeFiles/sorting_multithread.dir/main.c.o.requires:
+CMakeFiles/sorting_multithread.dir/sorting-multithread.c.o.requires:
 
-.PHONY : CMakeFiles/sorting_multithread.dir/main.c.o.requires
+.PHONY : CMakeFiles/sorting_multithread.dir/sorting-multithread.c.o.requires
 
-CMakeFiles/sorting_multithread.dir/main.c.o.provides: CMakeFiles/sorting_multithread.dir/main.c.o.requires
-	$(MAKE) -f CMakeFiles/sorting_multithread.dir/build.make CMakeFiles/sorting_multithread.dir/main.c.o.provides.build
-.PHONY : CMakeFiles/sorting_multithread.dir/main.c.o.provides
+CMakeFiles/sorting_multithread.dir/sorting-multithread.c.o.provides: CMakeFiles/sorting_multithread.dir/sorting-multithread.c.o.requires
+	$(MAKE) -f CMakeFiles/sorting_multithread.dir/build.make CMakeFiles/sorting_multithread.dir/sorting-multithread.c.o.provides.build
+.PHONY : CMakeFiles/sorting_multithread.dir/sorting-multithread.c.o.provides
 
-CMakeFiles/sorting_multithread.dir/main.c.o.provides.build: CMakeFiles/sorting_multithread.dir/main.c.o
+CMakeFiles/sorting_multithread.dir/sorting-multithread.c.o.provides.build: CMakeFiles/sorting_multithread.dir/sorting-multithread.c.o
 
 
 # Object files for target sorting_multithread
 sorting_multithread_OBJECTS = \
-"CMakeFiles/sorting_multithread.dir/main.c.o"
+"CMakeFiles/sorting_multithread.dir/sorting-multithread.c.o"
 
 # External object files for target sorting_multithread
 sorting_multithread_EXTERNAL_OBJECTS =
 
-sorting_multithread: CMakeFiles/sorting_multithread.dir/main.c.o
+sorting_multithread: CMakeFiles/sorting_multithread.dir/sorting-multithread.c.o
 sorting_multithread: CMakeFiles/sorting_multithread.dir/build.make
 sorting_multithread: CMakeFiles/sorting_multithread.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/D2R/Documents/CLionProjects/OS-Lab/sorting-multithread/cmake-build-debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking C executable sorting_multithread"
@@ -99,7 +99,7 @@ CMakeFiles/sorting_multithread.dir/build: sorting_multithread
 
 .PHONY : CMakeFiles/sorting_multithread.dir/build
 
-CMakeFiles/sorting_multithread.dir/requires: CMakeFiles/sorting_multithread.dir/main.c.o.requires
+CMakeFiles/sorting_multithread.dir/requires: CMakeFiles/sorting_multithread.dir/sorting-multithread.c.o.requires
 
 .PHONY : CMakeFiles/sorting_multithread.dir/requires
 

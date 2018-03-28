@@ -1,3 +1,8 @@
+/*
+NAME - DIVYA RAJ
+ROLL - 1610110123
+*/
+
 #include <stdio.h>
 #include <stdbool.h>
 #include <unistd.h>
@@ -12,7 +17,7 @@ typedef struct
 {
 	int start;
 	int end;
-}parameters;
+} parameters;
 
 long *masterArray;
 long *sortedArray;
@@ -39,8 +44,7 @@ void displayArray(long *array, int low, int high);
 
 void* sortInterface(void *parameter);
 
-void* mergeArrays(void* arg)
-;
+void* mergeArrays(void* arg);
 
 int main(int argc, char* argv[MAX_PARAMETER_LENGTH])
 {
@@ -50,7 +54,8 @@ int main(int argc, char* argv[MAX_PARAMETER_LENGTH])
 
 	arrayMiddle = masterArraySize/2;
 
-	printf("\nArray before sorting...\n");
+	printf("\nInput array has %d elements\n", masterArraySize + 1);
+	printf("Array before sorting...\n");
 	displayArray(masterArray, 0, masterArraySize);
 
 	//prepare params
@@ -94,6 +99,9 @@ void* mergeArrays(void* arg)
 
 	int rightArrayStart = middle + 1;
 
+	if(rightArrayStart > masterArraySize)
+		rightArrayStart = masterArraySize;
+
 	sortedArray = malloc(sizeof(long) * ((fileSize/2) + 1));
 
 	int i =0, j = 0, k = 0;  //indices to traverse arrays
@@ -106,11 +114,11 @@ void* mergeArrays(void* arg)
 		else
 			sortedArray[k++] = masterArray[rightArrayStart + j++];
 	}
-
-	while(i < size1)
+	
+	while(i <= size1)
 		sortedArray[k++] = masterArray[i++];
 
-	while(j < size2)
+	while(j <= size2)
 	{
 		sortedArray[k++] = masterArray[rightArrayStart + j++];
 	}

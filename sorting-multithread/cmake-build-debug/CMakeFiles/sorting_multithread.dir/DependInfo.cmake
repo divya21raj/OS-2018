@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/D2R/Documents/CLionProjects/OS-Lab/sorting-multithread/main.c" "/home/D2R/Documents/CLionProjects/OS-Lab/sorting-multithread/cmake-build-debug/CMakeFiles/sorting_multithread.dir/main.c.o"
+  "/home/D2R/Documents/CLionProjects/OS-Lab/sorting-multithread/sorting-multithread.c" "/home/D2R/Documents/CLionProjects/OS-Lab/sorting-multithread/cmake-build-debug/CMakeFiles/sorting_multithread.dir/sorting-multithread.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

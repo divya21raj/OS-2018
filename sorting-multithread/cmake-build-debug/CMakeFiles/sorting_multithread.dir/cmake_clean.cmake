@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/sorting_multithread.dir/main.c.o"
+  "CMakeFiles/sorting_multithread.dir/sorting-multithread.c.o"
   "sorting_multithread.pdb"
   "sorting_multithread"
 )

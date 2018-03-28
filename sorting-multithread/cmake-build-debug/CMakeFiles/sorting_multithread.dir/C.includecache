@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/D2R/Documents/CLionProjects/OS-Lab/sorting-multithread/main.c
+/home/D2R/Documents/CLionProjects/OS-Lab/sorting-multithread/sorting-multithread.c
 stdio.h
 -
 stdbool.h
@@ -18,5 +18,7 @@ sys/param.h
 memory.h
 -
 stdlib.h
+-
+pthread.h
 -
 

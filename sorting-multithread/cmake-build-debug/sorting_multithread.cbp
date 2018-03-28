@@ -74,7 +74,7 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/D2R/Documents/CLionProjects/OS-Lab/sorting-multithread/main.c">
+		<Unit filename="/home/D2R/Documents/CLionProjects/OS-Lab/sorting-multithread/sorting-multithread.c">
 			<Option target="sorting_multithread"/>
 		</Unit>
 		<Unit filename="/home/D2R/Documents/CLionProjects/OS-Lab/sorting-multithread/CMakeLists.txt">

@@ -123,32 +123,32 @@ sorting_multithread/fast:
 	$(MAKE) -f CMakeFiles/sorting_multithread.dir/build.make CMakeFiles/sorting_multithread.dir/build
 .PHONY : sorting_multithread/fast
 
-main.o: main.c.o
+sorting-multithread.o: sorting-multithread.c.o
 
-.PHONY : main.o
+.PHONY : sorting-multithread.o
 
 # target to build an object file
-main.c.o:
-	$(MAKE) -f CMakeFiles/sorting_multithread.dir/build.make CMakeFiles/sorting_multithread.dir/main.c.o
-.PHONY : main.c.o
+sorting-multithread.c.o:
+	$(MAKE) -f CMakeFiles/sorting_multithread.dir/build.make CMakeFiles/sorting_multithread.dir/sorting-multithread.c.o
+.PHONY : sorting-multithread.c.o
 
-main.i: main.c.i
+sorting-multithread.i: sorting-multithread.c.i
 
-.PHONY : main.i
+.PHONY : sorting-multithread.i
 
 # target to preprocess a source file
-main.c.i:
-	$(MAKE) -f CMakeFiles/sorting_multithread.dir/build.make CMakeFiles/sorting_multithread.dir/main.c.i
-.PHONY : main.c.i
+sorting-multithread.c.i:
+	$(MAKE) -f CMakeFiles/sorting_multithread.dir/build.make CMakeFiles/sorting_multithread.dir/sorting-multithread.c.i
+.PHONY : sorting-multithread.c.i
 
-main.s: main.c.s
+sorting-multithread.s: sorting-multithread.c.s
 
-.PHONY : main.s
+.PHONY : sorting-multithread.s
 
 # target to generate assembly for a file
-main.c.s:
-	$(MAKE) -f CMakeFiles/sorting_multithread.dir/build.make CMakeFiles/sorting_multithread.dir/main.c.s
-.PHONY : main.c.s
+sorting-multithread.c.s:
+	$(MAKE) -f CMakeFiles/sorting_multithread.dir/build.make CMakeFiles/sorting_multithread.dir/sorting-multithread.c.s
+.PHONY : sorting-multithread.c.s
 
 # Help Target
 help:
@@ -159,9 +159,9 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... sorting_multithread"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
+	@echo "... sorting-multithread.o"
+	@echo "... sorting-multithread.i"
+	@echo "... sorting-multithread.s"
 .PHONY : help
 
 

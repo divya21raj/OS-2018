@@ -1,1 +1,1 @@
-/usr/bin/cc -g   CMakeFiles/sorting_multithread.dir/main.c.o  -o sorting_multithread 
+/usr/bin/cc  -pthread -g   CMakeFiles/sorting_multithread.dir/sorting-multithread.c.o  -o sorting_multithread 
