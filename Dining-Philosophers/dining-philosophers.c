@@ -10,31 +10,41 @@ ROLL - 1610110123
 
 void initStuff(char **argv);
 
-void* philosopherWork(void *philosopherNumberAddress);
-
 unsigned int randomNum(int range);  //returns random number between 1 and range
 
+void* philosopherWork(int philNum);
+
 int N;  //Number of philosophers
-int iterations;  //eating iterations = N
-//semaphore chopstick[5];
+
+pthread_mutex_t chopstick[5];
 
 int *timeEating;
 
-int main(int argc, char* argv[2])
+int main(int argc, char* argv[])
 {
 	initStuff(argv);
 
-	pthread_t **philosophers;
+	pthread_t *philosophers = malloc(N* sizeof(pthread_t));
 
 	//starting the program clock
 	clock_t begin = clock();
 
-	//start all philosophers
 	int i;
+	//initiate all chopstick mutex locks
+	for(i=0; i< N; i++)
+		pthread_mutex_init(&chopstick[i],NULL);
+
+	//start all philosophers
 	for(i = 0; i< N; i++)
-	{
-		pthread_create(philosophers[i], NULL, philosopherWork, (void *) &i);
-	}
+		pthread_create(&(philosophers[i]), NULL, (void *)philosopherWork, (void *) i);
+
+	//waiting for all philosopher threads to join
+	for(i = 0; i< N; i++)
+		pthread_join(philosophers[i], NULL);
+
+	//destroy all chopstick mutex locks
+	for(i=0; i< N; i++)
+		pthread_mutex_destroy(&chopstick[i]);
 
 	//ending program clock
 	clock_t end = clock();
@@ -47,50 +57,48 @@ int main(int argc, char* argv[2])
 	return 0;
 }
 
-void* philosopherWork(void *philosopherNumberAddress)
+void* philosopherWork(int philNum)
 {
-	int philNum = *(int*)philosopherNumberAddress;
+	//pickup forks
+	pthread_mutex_lock(&chopstick[philNum]);
+	printf("\nPhilosopher number %d picked up fork number %d", philNum + 1, philNum +1);
+	pthread_mutex_lock(&chopstick[(philNum+1)%N]);
+	printf("\nPhilosopher number %d picked up fork number %d", philNum + 1, (philNum +1)%5 + 1);
 
-	do
-	{
-		/*pickupForks(philNum);
-		....
+	//eat for a while
+	printf("\nPhilosopher number %d is eating...", philNum + 1);
+	unsigned int eatTime = randomNum(3);
+	sleep(eatTime);
+	/*iterations--;
+	printf("\t%d", iterations);*/
+	timeEating[philNum] += eatTime;
 
-		*/
-		//eat for a while
-	 	printf("\nPhilosopher number %d is eating...", philNum + 1);
-	 	iterations--;
-	 	unsigned int eatTime = randomNum(3);
-	 	sleep(eatTime);
-	 	timeEating[philNum] += eatTime;
+	//return forks
+	pthread_mutex_unlock(&chopstick[philNum]);
+	printf("\nPhilosopher number %d put down fork number %d", philNum + 1, philNum +1);
+	pthread_mutex_unlock(&chopstick[(philNum+1)%N]);
+	printf("\nPhilosopher number %d put down fork number %d", philNum + 1, (philNum + 1)%5 +1);
 
-	 	/*returnForks(philNum);
-		. . .
-
-		think for awhile
-	 	*/sleep(randomNum(3));
-		//. . .
-
-	}
-	while (iterations>0);
+	//think for awhile
+	printf("\nPhilosopher number %d is thinking.", philNum + 1);
+	sleep(randomNum(3));
 
 }
 
 void initStuff(char **argv)
 {
-	N = atoi(argv[2]);
-	iterations = N;
+	N = atoi(argv[1]);
 
-	timeEating = malloc(N* sizeof(int));
-	timeEating = {0};
+	timeEating = (int*) calloc(N, sizeof(int));
+
+	srand((unsigned int) time(0));  //seeding the random no. generator with current time
 
 	printf("Number of philosophers = %d", N);
 }
 
 unsigned int randomNum(int range)  //returns random number between 1 and range
 {
-	srand((unsigned int) time(NULL));
-	int r = 1 + rand()%range;
+	unsigned int r = (unsigned int) (1 + rand() % range);
 
 	return r;
 }
