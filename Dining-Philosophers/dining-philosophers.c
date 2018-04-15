@@ -17,10 +17,9 @@ void pickupChopsticks(int philNum);
 
 void returnForks(int philNum);
 
-void eat(int num);
+void eat(int philNum);
 
-void* philosopherWork(const int* philNumArg)
-;
+void* philosopherWork(const int* philNumArg);
 
 int N;  //Number of philosophers
 
@@ -116,8 +115,6 @@ void pickupChopsticks(int philNum)
 	printf("\nPhilosopher number %d picked up stick number %d", philNum, philNum);
 	printf("\nPhilosopher number %d picked up stick number %d", philNum, (philNum+1)%N);
 
-	//eat(philNum);
-
 	hasEaten[philNum] = true;
 
 	pthread_mutex_unlock(&mutex);
@@ -149,19 +146,10 @@ void returnForks(int philNum)
 	printf("\nPhilosopher number %d put down stick number %d", philNum, (philNum+1)%N);
 
 	//signal others...
-	/*for(int i =0; i< N; i++)
-	{
-		if(i != philNum && !hasEaten[i])
-		{
-			pthread_cond_signal(&cond[i]);
-			printf("\nPhilosopher number %d signalled philosopher number %d", philNum, i);
-		}
-	}*/
-
 	pthread_cond_signal(&cond[left]);
-	printf("\nPhilosopher number %d signalled philosopher number %d", philNum, left);
+	//printf("\nPhilosopher number %d signalled philosopher number %d", philNum, left);
 	pthread_cond_signal(&cond[right]);
-	printf("\nPhilosopher number %d signalled philosopher number %d", philNum, right);
+	//printf("\nPhilosopher number %d signalled philosopher number %d", philNum, right);
 
 	pthread_mutex_unlock(&mutex);
 }
