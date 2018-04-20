@@ -5,7 +5,6 @@
 #include <stdio.h>
 #include <memory.h>
 #include <unistd.h>
-#include <stdbool.h>
 
 #include "pageAlgos.h"
 
@@ -23,9 +22,13 @@ int findLRU(const int *age, int size);
 
 int pageHasFrame(int page, const int *frameArray, int frameSize);
 
+int findOPT(int pageIndex, int *frameArray, int *pageArray, int frameSize, int pageArraySize);
+
+
 int opt(int *pageArray, int pageArraySize, int frameSize)
 {
 	int misses = 0;
+	int empty = 0;
 
 	int *frameArray = initFrames(frameSize);
 
@@ -33,9 +36,65 @@ int opt(int *pageArray, int pageArraySize, int frameSize)
 
 	for(int i=0; i< pageArraySize; i++)
 	{
+		//printf("\n%d. ", pageArray[i]);
 
+		int positionInFrameArray = pageHasFrame(pageArray[i], frameArray, frameSize);
+		if(positionInFrameArray == -1)
+		{
+			//printf("Miss!  ");
+			misses++;
+
+			victimFrame = findOPT(i, frameArray, pageArray, frameSize, pageArraySize);
+
+			if(empty < frameSize)
+				victimFrame = empty++;
+
+			frameArray[victimFrame] = pageArray[i];
+		}
+
+		else
+		{
+			//printf("Hit!  ");
+		}
+
+		//printFrames(frameArray, frameSize);
 	}
+
 	return misses;
+}
+
+int findOPT(int pageIndex, int *frameArray, int *pageArray, int frameSize, int pageArraySize)
+{
+	int frameIndex = 0;
+	int farthest = pageIndex;
+
+	for(int i=0; i<frameSize; i++)
+	{
+		if(frameArray[i] == -1)
+		{
+			frameIndex = i;
+			break;
+		}
+
+		int j;
+		for(j=pageIndex; j<pageArraySize; j++)
+		{
+			if(pageArray[j] == frameArray[i] && j > farthest)
+			{
+				farthest = j;
+				frameIndex = i;
+				break;
+			}
+		}
+
+		if(j == pageArraySize) //page won't be referenced in future
+		{
+			frameIndex = i;
+			break;
+		}
+	}
+
+	return frameIndex;
 }
 
 int lru(int *pageArray, int pageArraySize, int frameSize)
@@ -64,7 +123,6 @@ int lru(int *pageArray, int pageArraySize, int frameSize)
 
 		else
 		{
-			//hit!
 			//printf("Hit!  ");
 			age[positionInFrameArray] = age[mostRecentlyUsed] + 1;
 			mostRecentlyUsed = positionInFrameArray;

@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#define NUMBEROFPAGES 100
+#define NUMBEROFPAGES 25
 #define PAGERANGE 20
 
 #define FRAMESIZE 4
@@ -39,10 +39,10 @@ int main(int argc, char* argv[2])
 	printf("\nPage faults in FIFO = %d\n", pageFaultsFifo);
 
 	int pageFaultsLRU = lru(pageArray, pageArraySize, FRAMESIZE);
-	printf("\nPage faults in LRU = %d\n", pageFaultsFifo);
+	printf("\nPage faults in LRU = %d\n", pageFaultsLRU);
 
 	int pageFaultsOPT = opt(pageArray, pageArraySize, FRAMESIZE);
-	printf("\nPage faults in LRU = %d\n", pageFaultsFifo);
+	printf("\nPage faults in OPT = %d\n", pageFaultsOPT);
 
 	return 0;
 }
