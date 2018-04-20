@@ -5,8 +5,161 @@
 #include <stdio.h>
 #include <memory.h>
 #include <unistd.h>
+#include <stdbool.h>
 
 #include "pageAlgos.h"
+
+int mostRecentlyUsed = 0;
+
+int *initFrames(int size);
+
+void printFrames(int *frameArray, int size);
+
+int *initAge(int size);
+
+void incrementAge(int *age, int frame);
+
+int findLRU(const int *age, int size);
+
+int pageHasFrame(int page, const int *frameArray, int frameSize);
+
+int opt(int *pageArray, int pageArraySize, int frameSize)
+{
+	int misses = 0;
+
+	int *frameArray = initFrames(frameSize);
+
+	int victimFrame = 0;
+
+	for(int i=0; i< pageArraySize; i++)
+	{
+
+	}
+	return misses;
+}
+
+int lru(int *pageArray, int pageArraySize, int frameSize)
+{
+	int misses = 0;
+
+	int *frameArray = initFrames(frameSize);
+	int *age = initAge(frameSize);
+
+	int victimFrame = 0;
+
+	for(int i=0; i<pageArraySize; i++)
+	{
+		//printf("\n%d. ", pageArray[i]);
+		int positionInFrameArray = pageHasFrame(pageArray[i], frameArray, frameSize);
+		if(positionInFrameArray == -1)
+		{
+			//printf("Miss!  ");
+			misses++;
+
+			victimFrame = findLRU(age, frameSize);
+			frameArray[victimFrame] = pageArray[i];
+			incrementAge(age, victimFrame);
+			mostRecentlyUsed = victimFrame;
+		}
+
+		else
+		{
+			//hit!
+			//printf("Hit!  ");
+			age[positionInFrameArray] = age[mostRecentlyUsed] + 1;
+			mostRecentlyUsed = positionInFrameArray;
+		}
+
+		//printFrames(frameArray, frameSize);
+
+	}
+
+	return misses;
+}
+
+int findLRU(const int *age, int size)
+{
+	int index = 0;
+
+	for(int i = 0; i<size; i++)
+	{
+		if(age[i] < age[index])
+			index = i;
+	}
+
+	return index;
+}
+
+void incrementAge(int *age, int frame)
+{
+	age[frame] = age[mostRecentlyUsed] + 1;
+	mostRecentlyUsed = frame;
+}
+
+int *initAge(int size)
+{
+	int *age = malloc(size * sizeof(int));
+
+	for(int i=0; i<size; i++)
+		age[i] = 0;
+
+	return age;
+}
+
+int fifo(int *pageArray, int pageArraySize, int frameSize)
+{
+	int misses = 0;
+	int *frameArray = initFrames(frameSize);
+
+	int victimFrame = 0;
+
+	for(int i=0; i<pageArraySize; i++)
+	{
+		if(pageHasFrame(pageArray[i], frameArray, frameSize) == -1)
+		{
+			//printf("\n%d. Miss!", pageArray[i]);
+			misses++;
+
+			frameArray[victimFrame] = pageArray[i];
+			victimFrame = (victimFrame + 1)%frameSize;
+		}
+
+		else
+		{
+			//Hit!
+		}
+	}
+
+	return misses;
+}
+
+int pageHasFrame(int page, const int *frameArray, int frameSize)
+{
+	int positionInFrameArray = -1;
+
+	for(int i=0; i< frameSize; i++)
+	{
+		if(frameArray[i] == page)
+		{
+			positionInFrameArray = i;
+			break;
+		}
+	}
+
+	return positionInFrameArray;
+}
+
+
+void printFrames(int *frameArray, int size)
+{
+	printf("   ");
+
+	for(int i =0; i<size; i++)
+		printf(" %d|", frameArray[i]);
+
+	printf("\n");
+
+}
 
 void generateRandomInput(int size, int range, int *randomArray)
 {
@@ -36,5 +189,15 @@ void generateRandomInput(int size, int range, int *randomArray)
 	fprintf(input, "\n");
 
 	fclose(input);
+}
+
+int *initFrames(int size)
+{
+	int *frameArray = malloc(size*(sizeof(int)));
+
+	for(int i=0; i<size; i++)
+		frameArray[i] = -1;
+
+	return frameArray;
 }
 
