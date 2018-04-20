@@ -10,10 +10,10 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#define NUMBEROFPAGES 25
+#define NUMBEROFPAGES 100
 #define PAGERANGE 20
 
-#define FRAMESIZE 4
+int frameSize = 1;
 
 int *pageArray;
 int pageArraySize = 0;
@@ -28,23 +28,67 @@ long getSize(FILE *pFILE);
 
 void displayArray(int *array, int size);
 
+void setFrameSize(int i);
+
+void makeTable(int *fifo, int *lru, int *opt);
 
 int main(int argc, char* argv[2])
 {
+	int *pageFaultsFIFO = malloc(4* sizeof(int));
+	int *pageFaultsLRU = malloc(4* sizeof(int));
+	int *pageFaultsOPT = malloc(4* sizeof(int));
+
 	parseArguments(argv);
 
 	displayArray(pageArray, pageArraySize);
 
-	int pageFaultsFifo = fifo(pageArray, pageArraySize, FRAMESIZE);
-	printf("\nPage faults in FIFO = %d\n", pageFaultsFifo);
+	for(int i = 0; i < 4; i++)
+	{
+		setFrameSize(i);
 
-	int pageFaultsLRU = lru(pageArray, pageArraySize, FRAMESIZE);
-	printf("\nPage faults in LRU = %d\n", pageFaultsLRU);
+		pageFaultsFIFO[i] = fifo(pageArray, pageArraySize, frameSize);
 
-	int pageFaultsOPT = opt(pageArray, pageArraySize, FRAMESIZE);
-	printf("\nPage faults in OPT = %d\n", pageFaultsOPT);
+		pageFaultsLRU[i] = lru(pageArray, pageArraySize, frameSize);
+
+		pageFaultsOPT[i] = opt(pageArray, pageArraySize, frameSize);
+
+	}
+
+	makeTable(pageFaultsFIFO, pageFaultsLRU, pageFaultsOPT);
 
 	return 0;
+}
+
+void makeTable(int *fifo, int *lru, int *opt)
+{
+	printf("\n\t     MISSES OCCURRED         ");
+	printf("\n+---------------------------------------+");
+	printf("\n|\t|            Frames             |");
+	printf("\n|\t|1\t|4\t|6\t|10\t|");
+	printf("\n|---------------------------------------|");
+	printf("\n|FIFO\t|%d\t|%d\t|%d\t|%d\t|", fifo[0], fifo[1], fifo[2], fifo[3]);
+	printf("\n|---------------------------------------|");
+	printf("\n|LRU \t|%d\t|%d\t|%d\t|%d\t|", lru[0], lru[1], lru[2], lru[3]);
+	printf("\n|---------------------------------------|");
+	printf("\n|OPT \t|%d\t|%d\t|%d\t|%d\t|", opt[0], opt[1], opt[2], opt[3]);
+	printf("\n+---------------------------------------+\n\n");
+}
+
+void setFrameSize(int i)
+{
+	switch(i)
+	{
+		case 1:	frameSize = 4;
+			break;
+
+		case 2:	frameSize = 6;
+			break;
+
+		case 3:	frameSize = 10;
+			break;
+
+		default:break;
+	}
 }
 
 void parseArguments(char **argv)
