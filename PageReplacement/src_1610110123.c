@@ -34,6 +34,7 @@ void makeTable(int *fifo, int *lru, int *opt);
 
 int main(int argc, char* argv[2])
 {
+	//arrays that store the various page faults occurring for different frame sizes
 	int *pageFaultsFIFO = malloc(4* sizeof(int));
 	int *pageFaultsLRU = malloc(4* sizeof(int));
 	int *pageFaultsOPT = malloc(4* sizeof(int));
@@ -44,7 +45,7 @@ int main(int argc, char* argv[2])
 
 	for(int i = 0; i < 4; i++)
 	{
-		setFrameSize(i);
+		setFrameSize(i);   //varying the frame size b/w 1, 4, 6, 10
 
 		pageFaultsFIFO[i] = fifo(pageArray, pageArraySize, frameSize);
 
