@@ -1,0 +1,42 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/D2R/Documents/CLionProjects/OS-Lab/PageReplacement/pageAlgos.c
+time.h
+-
+stdlib.h
+-
+bits/types/FILE.h
+-
+libio.h
+-
+stdio.h
+-
+memory.h
+-
+unistd.h
+-
+pageAlgos.h
+/home/D2R/Documents/CLionProjects/OS-Lab/PageReplacement/pageAlgos.h
+
+/home/D2R/Documents/CLionProjects/OS-Lab/PageReplacement/pageAlgos.h
+
+/home/D2R/Documents/CLionProjects/OS-Lab/PageReplacement/src_1610110123.c
+pageAlgos.h
+/home/D2R/Documents/CLionProjects/OS-Lab/PageReplacement/pageAlgos.h
+stdio.h
+-
+memory.h
+-
+stdbool.h
+-
+stdlib.h
+-
+unistd.h
+-
+

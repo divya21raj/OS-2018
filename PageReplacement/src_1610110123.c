@@ -32,6 +32,8 @@ void setFrameSize(int i);
 
 void makeTable(int *fifo, int *lru, int *opt);
 
+void setup(int *opt);
+
 int main(int argc, char* argv[2])
 {
 	//arrays that store the various page faults occurring for different frame sizes
@@ -58,21 +60,6 @@ int main(int argc, char* argv[2])
 	makeTable(pageFaultsFIFO, pageFaultsLRU, pageFaultsOPT);
 
 	return 0;
-}
-
-void makeTable(int *fifo, int *lru, int *opt)
-{
-	printf("\n\t     MISSES OCCURRED         ");
-	printf("\n+---------------------------------------+");
-	printf("\n|\t|            Frames             |");
-	printf("\n|\t|1\t|4\t|6\t|10\t|");
-	printf("\n|---------------------------------------|");
-	printf("\n|FIFO\t|%d\t|%d\t|%d\t|%d\t|", fifo[0], fifo[1], fifo[2], fifo[3]);
-	printf("\n|---------------------------------------|");
-	printf("\n|LRU \t|%d\t|%d\t|%d\t|%d\t|", lru[0], lru[1], lru[2], lru[3]);
-	printf("\n|---------------------------------------|");
-	printf("\n|OPT \t|%d\t|%d\t|%d\t|%d\t|", opt[0], opt[1], opt[2], opt[3]);
-	printf("\n+---------------------------------------+\n\n");
 }
 
 void setFrameSize(int i)
@@ -108,6 +95,21 @@ void parseArguments(char **argv)
 		printf("Input file not found! Creating own...\n");
 		generateRandomInput(NUMBEROFPAGES, PAGERANGE, pageArray);
 	}
+}
+
+void makeTable(int *fifo, int *lru, int *opt)
+{
+	printf("\n\t     MISSES OCCURRED         ");
+	printf("\n+---------------------------------------+");
+	printf("\n|\t|            Frames             |");
+	printf("\n|\t|1\t|4\t|6\t|10\t|");
+	printf("\n|---------------------------------------|");
+	printf("\n|FIFO\t|%d\t|%d\t|%d\t|%d\t|", fifo[0], fifo[1], fifo[2], fifo[3]);
+	printf("\n|---------------------------------------|");
+	printf("\n|LRU \t|%d\t|%d\t|%d\t|%d\t|", lru[0], lru[1], lru[2], lru[3]);
+	printf("\n|---------------------------------------|");
+	printf("\n|OPT \t|%d\t|%d\t|%d\t|%d\t|", opt[0], opt[1], opt[2], opt[3]);
+	printf("\n+---------------------------------------+\n\n");
 }
 
 void displayArray(int *array, int size)

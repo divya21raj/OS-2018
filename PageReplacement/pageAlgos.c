@@ -77,12 +77,22 @@ int findOPT(int pageIndex, int *frameArray, int *pageArray, int frameSize, int p
 		}
 
 		int j;
-		for(j=pageIndex; j<pageArraySize; j++)
+		for(j=pageIndex + 1; j<=pageArraySize; j++)
 		{
-			if(pageArray[j] == frameArray[i] && j > farthest)
+			if(j == pageArraySize)
 			{
-				farthest = j;
+				//printf("max farthest = %d", farthest);
 				frameIndex = i;
+				break;
+			}
+
+			if((pageArray[j] == frameArray[i] ))
+			{
+				if(j > farthest)
+				{
+					farthest = j;
+					frameIndex = i;
+				}
 				break;
 			}
 		}
@@ -90,9 +100,12 @@ int findOPT(int pageIndex, int *frameArray, int *pageArray, int frameSize, int p
 		if(j == pageArraySize) //page won't be referenced in future
 		{
 			frameIndex = i;
+			//printf("max wala frameIndex = %d", frameIndex);
 			break;
 		}
 	}
+
+	//printf("final frameIndex = %d", frameIndex);
 
 	return frameIndex;
 }

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="PageReplacement"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/D2R/Documents/CLionProjects/OS-Lab/PageReplacement/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/D2R/Documents/CLionProjects/OS-Lab/PageReplacement/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/D2R/Documents/CLionProjects/OS-Lab/PageReplacement/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/D2R/Documents/CLionProjects/OS-Lab/PageReplacement/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/D2R/Documents/CLionProjects/OS-Lab/PageReplacement/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/D2R/Documents/CLionProjects/OS-Lab/PageReplacement/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/D2R/Documents/CLionProjects/OS-Lab/PageReplacement/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/D2R/Documents/CLionProjects/OS-Lab/PageReplacement/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/D2R/Documents/CLionProjects/OS-Lab/PageReplacement/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/D2R/Documents/CLionProjects/OS-Lab/PageReplacement/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/D2R/Documents/CLionProjects/OS-Lab/PageReplacement/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/D2R/Documents/CLionProjects/OS-Lab/PageReplacement/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/D2R/Documents/CLionProjects/OS-Lab/PageReplacement/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/D2R/Documents/CLionProjects/OS-Lab/PageReplacement/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/D2R/Documents/CLionProjects/OS-Lab/PageReplacement/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="PageReplacement">
+				<Option output="/home/D2R/Documents/CLionProjects/OS-Lab/PageReplacement/cmake-build-debug/PageReplacement" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/D2R/Documents/CLionProjects/OS-Lab/PageReplacement/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/D2R/Documents/CLionProjects/OS-Lab/PageReplacement/cmake-build-debug/Makefile&quot;  VERBOSE=1 PageReplacement"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/D2R/Documents/CLionProjects/OS-Lab/PageReplacement/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/D2R/Documents/CLionProjects/OS-Lab/PageReplacement/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/D2R/Documents/CLionProjects/OS-Lab/PageReplacement/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="PageReplacement/fast">
+				<Option output="/home/D2R/Documents/CLionProjects/OS-Lab/PageReplacement/cmake-build-debug/PageReplacement" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/D2R/Documents/CLionProjects/OS-Lab/PageReplacement/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/lib/gcc/x86_64-redhat-linux/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/gmake -j4 -f &quot;/home/D2R/Documents/CLionProjects/OS-Lab/PageReplacement/cmake-build-debug/Makefile&quot;  VERBOSE=1 PageReplacement/fast"/>
+					<CompileFile command="/usr/bin/gmake -j4 -f &quot;/home/D2R/Documents/CLionProjects/OS-Lab/PageReplacement/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/gmake -j4 -f &quot;/home/D2R/Documents/CLionProjects/OS-Lab/PageReplacement/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/gmake -j4 -f &quot;/home/D2R/Documents/CLionProjects/OS-Lab/PageReplacement/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/D2R/Documents/CLionProjects/OS-Lab/PageReplacement/pageAlgos.c">
+			<Option target="PageReplacement"/>
+		</Unit>
+		<Unit filename="/home/D2R/Documents/CLionProjects/OS-Lab/PageReplacement/pageAlgos.h">
+			<Option target="PageReplacement"/>
+		</Unit>
+		<Unit filename="/home/D2R/Documents/CLionProjects/OS-Lab/PageReplacement/src_1610110123.c">
+			<Option target="PageReplacement"/>
+		</Unit>
+		<Unit filename="/home/D2R/Documents/CLionProjects/OS-Lab/PageReplacement/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
